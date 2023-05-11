@@ -1,0 +1,43 @@
+@mixin theme($theme: dark) {
+    $main-font: 'Arya';
+    $main-font-style: normal;
+    $main-font-weight: 400;
+    $main-font-size: 16px;
+}
+
+%flex-row 
+
+%defintion-block {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: #fff;
+}
+
+
+body {
+    @include theme($theme: dark);
+}
+
+.definition-block {
+    @extend %defintion-block;
+}
+
+// body {
+//   font: 100% $font-stack;
+//   color: $primary-color;
+// }
+// nav {
+//     ul {
+//       margin: 0;
+//       padding: 0;
+//       list-style: none;
+//     }
+  
+//     li { display: inline-block; }
+  
+//     a {
+//       display: block;
+//       padding: 6px 12px;
+//       text-decoration: none;
+//     }
+//   }
