@@ -1,0 +1,142 @@
+const wordInput = document.getElementById("word-input");
+const form = document.querySelector("form");
+const rootUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+
+function meaningDiv() {
+   var meaningDiv = document.createElement("div");
+   document.body.append(meaningDiv);
+   meaningDiv.className;
+}
+
+function newDefBlock(definitions) {
+   var newDefBlock = document.createElement("div");
+   document.body.append(newDefBlock);
+   newDefBlock.id = "definition-block-" + definitions.partOfSpeech;
+   newDefBlock.className = "result-div";
+   let itemsContainers = document.querySelectorAll(".result-div");
+   console.log(itemsContainers);
+   console.log(itemsContainers.length);
+   for (let i = 0; i < itemsContainers.length; i++) {
+      console.log(definitions);
+      console.log(definitions.definitions);
+      itemsContainers[i].textContent = definitions.definitions.forEach(
+         (element) => {
+            console.log(element.definition);
+            console.log(itemsContainers[i]);
+            element.definition;
+         }
+      );
+   }
+}
+
+function Definitionblock(definition, example, synonyms, antonyms) {
+   this.definition = definition;
+   this.example = example;
+   this.synonyms = synonyms;
+   this.antonyms = antonyms;
+}
+console.log(Definitionblock);
+
+form.addEventListener("submit", (event) => {
+   event.preventDefault();
+   fetch(rootUrl + wordInput.value)
+      .then((response) => {
+         return response.json();
+      })
+      .then((donnees) => {
+         console.log(donnees[0]);
+         var partOfSpeech = donnees[0].meanings;
+         console.log(partOfSpeech);
+         partOfSpeech.forEach((element) => {
+            var partOfSpeechDefinitions = element.definitions;
+            console.log(partOfSpeechDefinitions);
+            partOfSpeechDefinitions.forEach((element) => {
+               var definitionsDefinition = element.definition;
+               console.log(definitionsDefinition);
+            });
+         });
+         console.log(donnees[0].meanings.definitions);
+         partOfSpeech.forEach((element) => {
+            var definitionsArray = element.definitions;
+            console.log("definitionsArray:" + definitionsArray);
+            console.log(element);
+            newDefBlock(element);
+            console.log(newDefBlock);
+
+            definitionsArray.forEach((element) => {
+               definitionsArrayDefinition = element.definition;
+               console.log(definitionsArrayDefinition);
+            });
+         });
+
+         // partOfSpeechDefinitions.array.forEach((definition) => {
+         //    newDefBlock(definition);
+         //    console.log(newDefBlock);
+         // });
+         // for (let i = 0; i < partOfSpeech.length; i++) {
+         //    console.log(partOfSpeech[i]);
+         //    var definitionData = partOfSpeech[i].definition;
+         //    console.log(partOfSpeech[i].definitions);
+
+         //    // let definition = partOfSpeech[i].definitions.definitions;
+         //    // let example = partOfSpeech[i].definitions.example;
+         //    // let synonyms = partOfSpeech[i].definitions.synonyms;
+         //    // let antonyms = partOfSpeech[i].definitions.antonyms;
+
+         //    let defsLevel1 = new Definitionblock(partOfSpeech[i].definitions);
+         //    console.log(defsLevel1);
+
+         //    // defsLevel1.definition.forEach((element) => {
+         //    //    newDefBlock(element);
+         //    // });
+
+         //    let defsLevel2 = defsLevel1.definition;
+         //    console.log(defsLevel2);
+         //    for (let i = 0; i < defsLevel2.length; i++) {
+         //       var definitionDataLevelUp = defsLevel2[i].definition;
+         //       var exampleDataLevelUp = defsLevel2[i].example;
+         //       var synonymsDataLevelUp = defsLevel2[i].synonyms;
+         //       var antonymsDataLevelUp = defsLevel2[i].antonyms;
+         //       console.log(definitionDataLevelUp);
+         //       console.log(exampleDataLevelUp);
+         //       console.log(synonymsDataLevelUp);
+         //       console.log(antonymsDataLevelUp);
+         //       newDefBlock(
+         //          definitionDataLevelUp,
+         //          exampleDataLevelUp,
+         //          synonymsDataLevelUp,
+         //          antonymsDataLevelUp
+         //       );
+         //       let definitionBlock =
+         //          document.getElementById("definition-block");
+         //       definitionBlock.appendChild.textContent = definitionDataLevelUp;
+         //       // let definitionList = document.getElementById("definitions-list");
+         //       // definitionList.textContent = definitionDataLevelUp;
+         //    }
+         //    // defsLevel2.array.forEach((element) => {
+         //    //    console.log(element);
+         //    // });
+         //    // newDefBlock(defsLevel1);
+         //    // console.log(defsLevel1);
+         // }
+      });
+});
+//let's get meanings 1 by one
+
+// let definitionTestBlock = {
+//    definition:
+//       "An object or other creation (e.g. narrative work) from which all later copies and variations are derived",
+//    example: "This manuscript is the original.",
+//    synonyms: ["autograph", "prototype"],
+//    antonyms: ["autograph", "initial", "prototype"],
+// };
+// console.log(definitionTestBlock);
+
+let test = new Definitionblock(
+   "bonjour",
+   "blablablabla",
+   ["synonyme 1", "synonyme 2"],
+   ["antonyme 1", "antonyme 2"]
+);
+
+console.log(test);

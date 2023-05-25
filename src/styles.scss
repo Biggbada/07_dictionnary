@@ -1,27 +1,99 @@
+:root {
+   font-family: "Arya";
+   font-style: normal;
+   font-weight: 400;
+   font-size: 1rem;
+   color: #592f25;
+}
+
 @mixin theme($theme: dark) {
-    $main-font: 'Arya';
-    $main-font-style: normal;
-    $main-font-weight: 400;
-    $main-font-size: 16px;
+   $main-font: "Arya";
+   $main-font-style: normal;
+   $main-font-weight: 400;
+   $main-font-size: 1rem;
 }
 
-%flex-row 
-
-%defintion-block {
-    display: flex;
-    flex-flow: row wrap;
-    background-color: #fff;
+%flex-row %defintion-block {
+   display: flex;
+   flex-flow: row wrap;
+   background-color: #fff;
 }
-
 
 body {
-    @include theme($theme: dark);
+   @include theme($theme: dark);
+   margin: 0;
+}
+form {
+   text-align: center;
+   margin: 1.25rem 0;
 }
 
 .definition-block {
-    @extend %defintion-block;
+   @extend %defintion-block;
 }
 
+div {
+   border: 1px solid black;
+}
+
+.header {
+   background-color: #8d9fa6;
+   margin-bottom: 1.25rem;
+   box-shadow: 5px 0.375rem 17px #8d9fa6;
+   border: none;
+   padding-top: 0.5rem;
+   padding-bottom: 5px;
+}
+.main-container {
+   font-style: italic;
+   width: 800px;
+   margin: auto;
+   border: 0;
+}
+
+.part-of-speech {
+   background-color: rgba(210, 105, 30, 0.3);
+   font-style: italic;
+   font-weight: bold;
+   margin-bottom: 1.875rem;
+   color: #0476d9;
+   padding-left: 1.25rem;
+   font-size: 1.2rem;
+}
+.part-of-speech :nth-child(1n) {
+   background-color: rgba(141, 159, 166, 0.3);
+}
+.part-of-speech :nth-child(2n) {
+   background-color: #f2f2f2;
+}
+
+.meaning-synonyms {
+   color: #078c03;
+   font-size: 0.875rem;
+   order: 5;
+}
+.meaning-antonyms {
+   color: #0476d9;
+   font-size: 0.875rem;
+   order: 6;
+}
+
+.definitions {
+   margin-top: 1.25rem;
+   font-style: normal;
+   margin-left: 20px;
+   padding-left: 1.25rem;
+   color: black;
+   font-weight: initial;
+   order: 1;
+   font-size: 1rem;
+}
+.definition-example {
+   padding-left: 1.25rem;
+   font-style: italic;
+   font-size: 0.875rem;
+   margin-left: 2.5rem;
+}
 // body {
 //   font: 100% $font-stack;
 //   color: $primary-color;
@@ -32,9 +104,9 @@ body {
 //       padding: 0;
 //       list-style: none;
 //     }
-  
+
 //     li { display: inline-block; }
-  
+
 //     a {
 //       display: block;
 //       padding: 6px 12px;
