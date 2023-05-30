@@ -23,6 +23,9 @@ body {
    @include theme($theme: dark);
    margin: 0;
 }
+h2 {
+   font-size: 1.4rem;
+}
 form {
    text-align: center;
    margin: 1.25rem 0;
@@ -60,13 +63,28 @@ div {
    padding-left: 1.25rem;
    font-size: 1.2rem;
 }
-.part-of-speech :nth-child(1n) {
+.language {
+   width: 50px;
+   height: fit-content;
+}
+audio {
+   margin: 0 0.625rem;
+}
+.phonetic {
+   font-style: initial;
+}
+ol :nth-child(1n) {
    background-color: rgba(141, 159, 166, 0.3);
 }
-.part-of-speech :nth-child(2n) {
+ol :nth-child(2n) {
    background-color: #f2f2f2;
 }
-
+div .definition-example :nth-of-type(1n) {
+   background-color: #f2f2f2;
+}
+div .definition-example :nth-of-type(2n) {
+   background-color: rgba(141, 159, 166, 0.3);
+}
 .meaning-synonyms {
    color: #078c03;
    font-size: 0.875rem;
@@ -77,7 +95,13 @@ div {
    font-size: 0.875rem;
    order: 6;
 }
-
+.audio-div {
+   display: flex;
+   align-items: center;
+}
+.language {
+   margin: 0 0.625rem;
+}
 .definitions {
    margin-top: 1.25rem;
    font-style: normal;
@@ -92,7 +116,6 @@ div {
    padding-left: 1.25rem;
    font-style: italic;
    font-size: 0.875rem;
-   margin-left: 2.5rem;
 }
 // body {
 //   font: 100% $font-stack;
